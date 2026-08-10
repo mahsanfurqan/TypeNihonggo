@@ -7,8 +7,9 @@ const ICON_X = 48;
 const TEXT_CENTER_X = 146;
 
 export class DangerZoneHint {
-  constructor(scene) {
+  constructor(scene, { left = 0 } = {}) {
     this.scene = scene;
+    this.left = left;
     this.container = null;
     this.card = null;
     this.beam = null;
@@ -93,7 +94,7 @@ export class DangerZoneHint {
       .setAlpha(0)
       .setScale(0.92);
     this.container = this.scene.add
-      .container(0, centerY, [this.beam, this.card])
+      .container(this.left, centerY, [this.beam, this.card])
       .setScrollFactor(0)
       .setDepth(38)
       .setAlpha(1);

@@ -17,6 +17,7 @@ import { LocaleManager } from '../managers/LocaleManager.js';
 import { LevelVocabularyLoader } from '../managers/LevelVocabularyLoader.js';
 import { LocalProgressManager } from '../managers/LocalProgressManager.js';
 import { ProgressionManager } from '../managers/ProgressionManager.js';
+import { ResponsiveGameplayViewport } from '../managers/ResponsiveGameplayViewport.js';
 import { SessionStatsManager } from '../managers/SessionStatsManager.js';
 import { TypingManager } from '../managers/TypingManager.js';
 import { WordManager } from '../managers/WordManager.js';
@@ -56,6 +57,9 @@ export class GameScene extends Phaser.Scene {
     this.isAwaitingStageChoice = false;
     this.isPauseMenuOpen = false;
 
+    this.responsiveViewport = new ResponsiveGameplayViewport(this);
+    this.gameplayViewport = this.responsiveViewport.bounds;
+
     this.vocabularyRepository = new VocabularyRepository({
       catalogs: vocabularyCatalogs,
       courseManifests: generalCourseManifests,
@@ -79,7 +83,9 @@ export class GameScene extends Phaser.Scene {
       localeManager: this.localeManager,
       courseProgression: this.courseProgression,
     });
-    this.gameplaySettings = this.levelVocabularyLoader.resolveGameplaySettings();
+    this.gameplaySettings = this.responsiveViewport.applyToSettings(
+      this.levelVocabularyLoader.resolveGameplaySettings(),
+    );
     const vocabulary = this.levelVocabularyLoader.loadVocabulary();
 
     this.backgroundManager = new BackgroundManager(this, {
@@ -88,8 +94,14 @@ export class GameScene extends Phaser.Scene {
     this.audioManager = new AudioManager();
     this.gameFlowController = new GameFlowController(this);
 
-    this.player = new Player(this, PLAYER_POSITION.x, PLAYER_POSITION.y);
-    this.dangerZoneHint = new DangerZoneHint(this);
+    this.player = new Player(
+      this,
+      this.gameplayViewport.isCropped ? this.gameplayViewport.playerX : PLAYER_POSITION.x,
+      PLAYER_POSITION.y,
+    );
+    this.dangerZoneHint = new DangerZoneHint(this, {
+      left: this.gameplayViewport.left,
+    });
     this.pauseMenu = new PauseMenu(this);
     this.hud = new Hud(this, {
       onMenu: () => this.gameFlowController.openPauseMenu(),
@@ -164,5 +176,6 @@ export class GameScene extends Phaser.Scene {
     this.gameOverOverlay?.destroy();
     this.hud?.destroy();
     this.player?.destroy();
+    this.responsiveViewport?.destroy();
   }
 }

@@ -124,8 +124,9 @@ export class LevelTransitionController {
       generalCourseConfig,
       this.scene.courseProgression.getStage(nextLevel),
     );
-    this.scene.gameplaySettings =
-      this.scene.levelVocabularyLoader.resolveGameplaySettings(nextLevel);
+    this.scene.gameplaySettings = this.scene.responsiveViewport.applyToSettings(
+      this.scene.levelVocabularyLoader.resolveGameplaySettings(nextLevel),
+    );
     this.scene.backgroundManager.setMap(
       this.scene.levelVocabularyLoader.resolveBackgroundMapId(nextLevel),
     );

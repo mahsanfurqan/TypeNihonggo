@@ -3,9 +3,67 @@ import { formatElapsedTime } from '../utils/formatTime.js';
 
 const MAX_LIVES = 3;
 
+function resolveHudLayout(scene) {
+  const viewport = scene.gameplayViewport ?? {
+    left: 0,
+    right: scene.cameras.main.width,
+    width: scene.cameras.main.width,
+  };
+  const isCompact = viewport.width < 720;
+
+  if (!isCompact) {
+    const offsetX = viewport.left;
+
+    return {
+      isCompact,
+      panel: {
+        x: offsetX + 28,
+        y: 24,
+        width: Math.min(552, viewport.width - 56),
+        height: 138,
+      },
+      title: { x: offsetX + 54, y: 39, fontSize: 22, text: 'SYSTEM - TypeNihongo' },
+      session: { x: offsetX + 558, y: 45, fontSize: 14, originX: 1 },
+      lives: { x: offsetX + 54, y: 76 },
+      heartStartX: offsetX + 126,
+      heartTopY: 76,
+      heartSize: 22,
+      heartSpacing: 32,
+      time: { x: offsetX + 278, y: 76 },
+      score: { x: offsetX + 414, y: 76 },
+      target: { x: offsetX + 54, y: 108 },
+      metaFontSize: 18,
+      menu: { x: viewport.right - 92, y: 50, width: 136, height: 46, fontSize: 16 },
+      sound: { x: viewport.right - 92, y: 104, width: 136, height: 36, fontSize: 13 },
+    };
+  }
+
+  const left = viewport.left;
+  const right = viewport.right;
+
+  return {
+    isCompact,
+    panel: { x: left + 12, y: 16, width: viewport.width - 24, height: 146 },
+    title: { x: left + 30, y: 29, fontSize: 18, text: 'SYSTEM - TypeNihongo' },
+    session: { x: left + 30, y: 57, fontSize: 12, originX: 0 },
+    lives: { x: left + 30, y: 84 },
+    heartStartX: left + 92,
+    heartTopY: 84,
+    heartSize: 18,
+    heartSpacing: 26,
+    time: { x: left + 198, y: 84 },
+    score: { x: left + 198, y: 116 },
+    target: { x: left + 30, y: 116 },
+    metaFontSize: 14,
+    menu: { x: right - 61, y: 39, width: 96, height: 34, fontSize: 13 },
+    sound: { x: right - 61, y: 82, width: 96, height: 30, fontSize: 11 },
+  };
+}
+
 export class Hud {
   constructor(scene, { onMenu, onToggleSound, isSoundMuted = false } = {}) {
     this.scene = scene;
+    this.layout = resolveHudLayout(scene);
     this.currentLives = MAX_LIVES;
     this.lifeHearts = [];
 
@@ -14,9 +72,9 @@ export class Hud {
     this.drawStatusWindow();
 
     this.titleLabel = scene.add
-      .text(54, 39, 'SYSTEM - TypeNihongo', {
+      .text(this.layout.title.x, this.layout.title.y, this.layout.title.text, {
         fontFamily: '"Trebuchet MS", "Segoe UI", sans-serif',
-        fontSize: '22px',
+        fontSize: `${this.layout.title.fontSize}px`,
         color: '#e9f8ff',
         fontStyle: '700',
       })
@@ -24,42 +82,46 @@ export class Hud {
       .setDepth(43);
 
     this.sessionLabel = scene.add
-      .text(558, 45, 'GENERAL - LEVEL 1', {
+      .text(this.layout.session.x, this.layout.session.y, 'GENERAL - LEVEL 1', {
         fontFamily: '"Trebuchet MS", "Segoe UI", sans-serif',
-        fontSize: '14px',
+        fontSize: `${this.layout.session.fontSize}px`,
         color: '#83d9f5',
         fontStyle: '700',
         letterSpacing: 1,
       })
-      .setOrigin(1, 0)
+      .setOrigin(this.layout.session.originX, 0)
       .setScrollFactor(0)
       .setDepth(43);
 
-    this.livesLabel = this.createMetaText(54, 76, 'LIFE');
+    this.livesLabel = this.createMetaText(this.layout.lives.x, this.layout.lives.y, 'LIFE');
     this.createHeartIcons();
-    this.timeLabel = this.createMetaText(278, 76, 'Time: 00:00');
-    this.scoreLabel = this.createMetaText(414, 76, 'Score: 0');
-    this.targetLabel = this.createMetaText(54, 108, 'Target: ---');
+    this.timeLabel = this.createMetaText(this.layout.time.x, this.layout.time.y, 'Time: 00:00');
+    this.scoreLabel = this.createMetaText(this.layout.score.x, this.layout.score.y, 'Score: 0');
+    this.targetLabel = this.createMetaText(
+      this.layout.target.x,
+      this.layout.target.y,
+      'Target: ---',
+    );
 
     this.menuButton = new SetupButton(scene, {
-      x: scene.cameras.main.width - 92,
-      y: 50,
-      width: 136,
-      height: 46,
+      x: this.layout.menu.x,
+      y: this.layout.menu.y,
+      width: this.layout.menu.width,
+      height: this.layout.menu.height,
       label: 'MENU',
-      fontSize: 16,
+      fontSize: this.layout.menu.fontSize,
       onSelect: onMenu,
     })
       .setScrollFactor(0)
       .setDepth(44);
 
     this.soundButton = new SetupButton(scene, {
-      x: scene.cameras.main.width - 92,
-      y: 104,
-      width: 136,
-      height: 36,
+      x: this.layout.sound.x,
+      y: this.layout.sound.y,
+      width: this.layout.sound.width,
+      height: this.layout.sound.height,
       label: isSoundMuted ? 'SOUND OFF' : 'SOUND ON',
-      fontSize: 13,
+      fontSize: this.layout.sound.fontSize,
       onSelect: () => {
         const isMuted = onToggleSound?.() ?? false;
         this.setSoundMuted(isMuted);
@@ -71,10 +133,7 @@ export class Hud {
   }
 
   drawStatusWindow() {
-    const x = 28;
-    const y = 24;
-    const width = Math.min(552, this.scene.cameras.main.width - 56);
-    const height = 138;
+    const { x, y, width, height } = this.layout.panel;
 
     this.panelGlow.fillStyle(0x25a9ff, 0.08);
     this.panelGlow.fillRoundedRect(x - 7, y - 7, width + 14, height + 14, 12);
@@ -109,7 +168,7 @@ export class Hud {
     return this.scene.add
       .text(x, y, value, {
         fontFamily: '"Trebuchet MS", "Segoe UI", sans-serif',
-        fontSize: '18px',
+        fontSize: `${this.layout.metaFontSize}px`,
         color: '#d8e1f2',
       })
       .setScrollFactor(0)
@@ -151,7 +210,13 @@ export class Hud {
   updateHeartIcons() {
     this.lifeHearts.forEach((heart, index) => {
       heart.clear();
-      this.drawHeart(heart, 126 + index * 32, 76, 22, index < this.currentLives);
+      this.drawHeart(
+        heart,
+        this.layout.heartStartX + index * this.layout.heartSpacing,
+        this.layout.heartTopY,
+        this.layout.heartSize,
+        index < this.currentLives,
+      );
     });
   }
 

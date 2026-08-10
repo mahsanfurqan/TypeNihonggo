@@ -84,6 +84,23 @@ body {
     place-items: end center;
   }
 
+  html.typenihongo-gameplay-active .typenihongo-game {
+    position: relative;
+    overflow: hidden;
+  }
+
+  html.typenihongo-gameplay-active .typenihongo-game canvas {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: auto !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    transform: translateX(-50%);
+  }
+
   .mobile-input-root {
     display: grid;
     position: fixed;

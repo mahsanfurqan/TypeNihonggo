@@ -82,7 +82,7 @@ export class MobileTypingInput {
         '{numbers}': '123',
         '{settings}': '⚙',
         '{emoji}': '☺',
-        '{space}': '',
+        '{space}': '\u00a0',
         '{enter}': '↵',
       },
       theme: 'hg-theme-default typenihongo-virtual-keyboard',
