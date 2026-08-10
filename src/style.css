@@ -1,0 +1,163 @@
+html,
+body,
+#app {
+  width: 100%;
+  height: var(--typenihongo-visual-height, 100dvh);
+  min-height: var(--typenihongo-visual-height, 100dvh);
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, #173058 0%, rgba(23, 48, 88, 0.2) 30%, transparent 55%),
+    linear-gradient(180deg, #040914 0%, #08111f 45%, #050910 100%);
+  color: #f5f7ff;
+  font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+}
+
+#app {
+  display: grid;
+  place-items: center;
+}
+
+.typenihongo-shell {
+  width: 100%;
+  height: var(--typenihongo-visual-height, 100dvh);
+  display: grid;
+  place-items: center;
+}
+
+.typenihongo-game {
+  width: 100%;
+  height: var(--typenihongo-visual-height, 100dvh);
+  display: grid;
+  place-items: center;
+}
+
+.typenihongo-game canvas {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.mobile-input-root {
+  display: none;
+}
+
+.mobile-typing-input__keyboard {
+  display: none;
+}
+
+.mobile-typing-input__field {
+  width: 1px;
+  height: 1px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  font-size: 16px;
+  opacity: 0.01;
+  pointer-events: none;
+  border: 0;
+  padding: 0;
+}
+
+@media (max-width: 1280px) {
+  :root {
+    --typenihongo-keyboard-height: clamp(184px, 30vh, 280px);
+  }
+
+  #app,
+  .typenihongo-shell,
+  .typenihongo-game {
+    height: calc(var(--typenihongo-visual-height, 100dvh) - var(--typenihongo-keyboard-height));
+    min-height: 280px;
+  }
+
+  #app,
+  .typenihongo-shell,
+  .typenihongo-game {
+    place-items: end center;
+  }
+
+  .mobile-input-root {
+    display: grid;
+    position: fixed;
+    width: 100%;
+    height: var(--typenihongo-keyboard-height);
+    left: 0;
+    bottom: 0;
+    z-index: 20;
+    place-items: center;
+    padding: 8px 10px max(10px, env(safe-area-inset-bottom));
+    box-sizing: border-box;
+    overflow: visible;
+    pointer-events: auto;
+    background:
+      linear-gradient(180deg, rgba(4, 9, 20, 0), rgba(4, 9, 20, 0.72) 18%),
+      radial-gradient(circle at top, rgba(58, 172, 231, 0.12), transparent 64%);
+    backdrop-filter: blur(2px);
+  }
+
+  .mobile-typing-input__keyboard {
+    width: min(100%, 760px);
+    display: block;
+    padding: 6px;
+    border-radius: 9px;
+    background: transparent;
+    box-sizing: border-box;
+  }
+
+  .typenihongo-virtual-keyboard.hg-theme-default {
+    background: transparent;
+    font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+  }
+
+  .typenihongo-virtual-keyboard .hg-row {
+    gap: 4px;
+    margin-bottom: 5px;
+  }
+
+  .typenihongo-virtual-keyboard .hg-button {
+    height: clamp(34px, 6vh, 52px);
+    min-width: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    background: linear-gradient(180deg, #4f4f4f 0%, #363636 100%) !important;
+    box-shadow:
+      0 2px 0 rgba(0, 0, 0, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    color: #f2f2f2 !important;
+    font-size: clamp(16px, 3.4vw, 26px);
+    font-weight: 700;
+  }
+
+  .typenihongo-virtual-keyboard .hg-button:active {
+    background: linear-gradient(180deg, #6a6a6a 0%, #464646 100%) !important;
+    transform: translateY(1px);
+  }
+
+  .typenihongo-virtual-keyboard .hg-button-space {
+    flex: 4 1 160px;
+  }
+
+  .typenihongo-virtual-keyboard .hg-button-numbers,
+  .typenihongo-virtual-keyboard .hg-button-settings,
+  .typenihongo-virtual-keyboard .hg-button-emoji,
+  .typenihongo-virtual-keyboard .hg-button-enter,
+  .typenihongo-virtual-keyboard .hg-button-bksp,
+  .typenihongo-virtual-keyboard .hg-button-shift {
+    flex: 1.1 1 42px;
+    font-size: clamp(13px, 2.7vw, 19px);
+  }
+}
+
+@media (min-width: 760px) and (max-width: 1280px) {
+  :root {
+    --typenihongo-keyboard-height: clamp(220px, 30vh, 320px);
+  }
+}

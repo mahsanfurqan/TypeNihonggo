@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "courseId": "general",
+  "title": "General",
+  "contentMode": "sample",
+  "levelRange": { "min": 1, "max": 150 },
+  "stages": [
+    {
+      "id": "general-easy-hiragana",
+      "title": "Easy Hiragana",
+      "levelRange": { "min": 1, "max": 10 },
+      "difficulty": "easy",
+      "writingSystems": ["hiragana"],
+      "composition": "single-script"
+    },
+    {
+      "id": "general-easy-katakana",
+      "title": "Easy Katakana",
+      "levelRange": { "min": 11, "max": 20 },
+      "difficulty": "easy",
+      "writingSystems": ["katakana"],
+      "composition": "single-script"
+    },
+    {
+      "id": "general-hard-kana",
+      "title": "Hard Kana",
+      "levelRange": { "min": 21, "max": 50 },
+      "difficulty": "hard",
+      "writingSystems": ["hiragana", "katakana"],
+      "composition": "mixed-kana"
+    },
+    {
+      "id": "general-easy-kanji",
+      "title": "Easy Kanji",
+      "levelRange": { "min": 51, "max": 60 },
+      "difficulty": "easy",
+      "writingSystems": ["kanji"],
+      "composition": "single-script"
+    },
+    {
+      "id": "general-easy-kana-kanji",
+      "title": "Easy Kana + Kanji",
+      "levelRange": { "min": 61, "max": 100 },
+      "difficulty": "easy",
+      "writingSystems": ["hiragana", "katakana", "kanji"],
+      "composition": "mixed-kana-kanji"
+    },
+    {
+      "id": "general-hard-kana-kanji",
+      "title": "Hard Kana + Kanji",
+      "levelRange": { "min": 101, "max": 150 },
+      "difficulty": "hard",
+      "writingSystems": ["hiragana", "katakana", "kanji"],
+      "composition": "mixed-kana-kanji"
+    }
+  ]
+}

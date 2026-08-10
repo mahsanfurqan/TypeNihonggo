@@ -1,0 +1,21 @@
+{
+  "name": "typenihongo",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test",
+    "locale:create": "node scripts/create-locale.mjs",
+    "validate:vocabulary": "node scripts/validate-vocabulary.mjs"
+  },
+  "devDependencies": {
+    "vite": "^8.1.1"
+  },
+  "dependencies": {
+    "phaser": "^3.90.0",
+    "simple-keyboard": "^3.8.176"
+  }
+}

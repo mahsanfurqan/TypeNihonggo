@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "catalogId": "katakana",
+  "entries": [
+    {
+      "id": "jp-000004",
+      "display": "テレビ",
+      "reading": "テレビ",
+      "writingSystem": "katakana",
+      "romaji": {
+        "primary": "terebi",
+        "accepted": ["terebi"]
+      },
+      "category": "technology"
+    },
+    {
+      "id": "jp-000005",
+      "display": "コーヒー",
+      "reading": "コーヒー",
+      "writingSystem": "katakana",
+      "romaji": {
+        "primary": "koohii",
+        "accepted": ["koohii", "kohi"]
+      },
+      "category": "food-drink"
+    },
+    {
+      "id": "jp-000057",
+      "display": "パン",
+      "reading": "パン",
+      "writingSystem": "katakana",
+      "romaji": {
+        "primary": "pan",
+        "accepted": ["pan"]
+      },
+      "category": "food-drink"
+    },
+    {
+      "id": "jp-000058",
+      "display": "バス",
+      "reading": "バス",
+      "writingSystem": "katakana",
+      "romaji": {
+        "primary": "basu",
+        "accepted": ["basu"]
+      },
+      "category": "transportation"
+    },
+    {
+      "id": "jp-000059",
+      "display": "カメラ",
+      "reading": "カメラ",
+      "writingSystem": "katakana",
+      "romaji": {
+        "primary": "kamera",
+        "accepted": ["kamera"]
+      },
+      "category": "technology"
+    },
+    {
+      "id": "jp-000060",
+      "display": "ホテル",
+      "reading": "ホテル",
+      "writingSystem": "katakana",
+      "romaji": {
+        "primary": "hoteru",
+        "accepted": ["hoteru"]
+      },
+      "category": "places"
+    },
+    {
+      "id": "jp-000063",
+      "display": "レストラン",
+      "reading": "レストラン",
+      "writingSystem": "katakana",
+      "romaji": {
+        "primary": "resutoran",
+        "accepted": ["resutoran"]
+      },
+      "category": "places"
+    },
+    {
+      "id": "jp-000064",
+      "display": "コンピューター",
+      "reading": "コンピューター",
+      "writingSystem": "katakana",
+      "romaji": {
+        "primary": "konpyuutaa",
+        "accepted": ["konpyuutaa", "konpyuta"]
+      },
+      "category": "technology"
+    },
+    {
+      "id": "jp-000070",
+      "display": "スーパー",
+      "reading": "スーパー",
+      "writingSystem": "katakana",
+      "romaji": {
+        "primary": "suupaa",
+        "accepted": ["suupaa", "supa"]
+      },
+      "category": "places"
+    },
+    {
+      "id": "jp-000073",
+      "display": "コンビニ",
+      "reading": "コンビニ",
+      "writingSystem": "katakana",
+      "romaji": {
+        "primary": "konbini",
+        "accepted": ["konbini"]
+      },
+      "category": "places"
+    },
+    { "id": "jp-000078", "display": "ラジオ", "reading": "ラジオ", "writingSystem": "katakana", "romaji": { "primary": "rajio", "accepted": ["rajio"] }, "category": "technology" },
+    { "id": "jp-000079", "display": "バナナ", "reading": "バナナ", "writingSystem": "katakana", "romaji": { "primary": "banana", "accepted": ["banana"] }, "category": "food-drink" },
+    { "id": "jp-000080", "display": "トマト", "reading": "トマト", "writingSystem": "katakana", "romaji": { "primary": "tomato", "accepted": ["tomato"] }, "category": "food-drink" },
+    { "id": "jp-000081", "display": "ミルク", "reading": "ミルク", "writingSystem": "katakana", "romaji": { "primary": "miruku", "accepted": ["miruku"] }, "category": "food-drink" },
+    { "id": "jp-000082", "display": "ジュース", "reading": "ジュース", "writingSystem": "katakana", "romaji": { "primary": "juusu", "accepted": ["juusu"] }, "category": "food-drink" },
+    { "id": "jp-000083", "display": "ケーキ", "reading": "ケーキ", "writingSystem": "katakana", "romaji": { "primary": "keeki", "accepted": ["keeki"] }, "category": "food-drink" },
+    { "id": "jp-000084", "display": "アイスクリーム", "reading": "アイスクリーム", "writingSystem": "katakana", "romaji": { "primary": "aisukuriimu", "accepted": ["aisukuriimu"] }, "category": "food-drink" },
+    { "id": "jp-000085", "display": "サラダ", "reading": "サラダ", "writingSystem": "katakana", "romaji": { "primary": "sarada", "accepted": ["sarada"] }, "category": "food-drink" },
+    { "id": "jp-000086", "display": "カレー", "reading": "カレー", "writingSystem": "katakana", "romaji": { "primary": "karee", "accepted": ["karee"] }, "category": "food-drink" },
+    { "id": "jp-000087", "display": "スープ", "reading": "スープ", "writingSystem": "katakana", "romaji": { "primary": "suupu", "accepted": ["suupu"] }, "category": "food-drink" },
+    { "id": "jp-000088", "display": "ハンバーガー", "reading": "ハンバーガー", "writingSystem": "katakana", "romaji": { "primary": "hanbaagaa", "accepted": ["hanbaagaa"] }, "category": "food-drink" },
+    { "id": "jp-000089", "display": "テーブル", "reading": "テーブル", "writingSystem": "katakana", "romaji": { "primary": "teeburu", "accepted": ["teeburu"] }, "category": "home" },
+    { "id": "jp-000090", "display": "ベッド", "reading": "ベッド", "writingSystem": "katakana", "romaji": { "primary": "beddo", "accepted": ["beddo"] }, "category": "home" },
+    { "id": "jp-000091", "display": "ドア", "reading": "ドア", "writingSystem": "katakana", "romaji": { "primary": "doa", "accepted": ["doa"] }, "category": "home" },
+    { "id": "jp-000092", "display": "カーテン", "reading": "カーテン", "writingSystem": "katakana", "romaji": { "primary": "kaaten", "accepted": ["kaaten"] }, "category": "home" },
+    { "id": "jp-000093", "display": "エレベーター", "reading": "エレベーター", "writingSystem": "katakana", "romaji": { "primary": "erebeetaa", "accepted": ["erebeetaa"] }, "category": "places" },
+    { "id": "jp-000094", "display": "トイレ", "reading": "トイレ", "writingSystem": "katakana", "romaji": { "primary": "toire", "accepted": ["toire"] }, "category": "places" },
+    { "id": "jp-000095", "display": "キッチン", "reading": "キッチン", "writingSystem": "katakana", "romaji": { "primary": "kicchin", "accepted": ["kicchin"] }, "category": "home" },
+    { "id": "jp-000096", "display": "シャワー", "reading": "シャワー", "writingSystem": "katakana", "romaji": { "primary": "shawaa", "accepted": ["shawaa"] }, "category": "home" },
+    { "id": "jp-000097", "display": "タクシー", "reading": "タクシー", "writingSystem": "katakana", "romaji": { "primary": "takushii", "accepted": ["takushii"] }, "category": "transportation" },
+    { "id": "jp-000098", "display": "バイク", "reading": "バイク", "writingSystem": "katakana", "romaji": { "primary": "baiku", "accepted": ["baiku"] }, "category": "transportation" },
+    { "id": "jp-000099", "display": "スポーツ", "reading": "スポーツ", "writingSystem": "katakana", "romaji": { "primary": "supootsu", "accepted": ["supootsu"] }, "category": "sports" },
+    { "id": "jp-000100", "display": "サッカー", "reading": "サッカー", "writingSystem": "katakana", "romaji": { "primary": "sakkaa", "accepted": ["sakkaa"] }, "category": "sports" },
+    { "id": "jp-000101", "display": "テニス", "reading": "テニス", "writingSystem": "katakana", "romaji": { "primary": "tenisu", "accepted": ["tenisu"] }, "category": "sports" },
+    { "id": "jp-000102", "display": "ゲーム", "reading": "ゲーム", "writingSystem": "katakana", "romaji": { "primary": "geemu", "accepted": ["geemu"] }, "category": "leisure" },
+    { "id": "jp-000103", "display": "アニメ", "reading": "アニメ", "writingSystem": "katakana", "romaji": { "primary": "anime", "accepted": ["anime"] }, "category": "leisure" },
+    { "id": "jp-000104", "display": "ペン", "reading": "ペン", "writingSystem": "katakana", "romaji": { "primary": "pen", "accepted": ["pen"] }, "category": "education" },
+    { "id": "jp-000105", "display": "ノート", "reading": "ノート", "writingSystem": "katakana", "romaji": { "primary": "nooto", "accepted": ["nooto"] }, "category": "education" },
+    { "id": "jp-000106", "display": "パソコン", "reading": "パソコン", "writingSystem": "katakana", "romaji": { "primary": "pasokon", "accepted": ["pasokon"] }, "category": "technology" },
+    { "id": "jp-000107", "display": "コピー", "reading": "コピー", "writingSystem": "katakana", "romaji": { "primary": "kopii", "accepted": ["kopii"] }, "category": "technology" },
+    { "id": "jp-000108", "display": "ボールペン", "reading": "ボールペン", "writingSystem": "katakana", "romaji": { "primary": "boorupen", "accepted": ["boorupen"] }, "category": "education" },
+    { "id": "jp-000109", "display": "プレゼント", "reading": "プレゼント", "writingSystem": "katakana", "romaji": { "primary": "purezento", "accepted": ["purezento"] }, "category": "shopping" },
+    { "id": "jp-000110", "display": "アルバイト", "reading": "アルバイト", "writingSystem": "katakana", "romaji": { "primary": "arubaito", "accepted": ["arubaito"] }, "category": "work" },
+    { "id": "jp-000111", "display": "パーティー", "reading": "パーティー", "writingSystem": "katakana", "romaji": { "primary": "paatii", "accepted": ["paatii"] }, "category": "social" },
+    { "id": "jp-000112", "display": "コンサート", "reading": "コンサート", "writingSystem": "katakana", "romaji": { "primary": "konsaato", "accepted": ["konsaato"] }, "category": "leisure" },
+    { "id": "jp-000113", "display": "チケット", "reading": "チケット", "writingSystem": "katakana", "romaji": { "primary": "chiketto", "accepted": ["chiketto"] }, "category": "leisure" },
+    { "id": "jp-000114", "display": "ホーム", "reading": "ホーム", "writingSystem": "katakana", "romaji": { "primary": "hoomu", "accepted": ["hoomu"] }, "category": "transportation" },
+    { "id": "jp-000115", "display": "コンセント", "reading": "コンセント", "writingSystem": "katakana", "romaji": { "primary": "konsento", "accepted": ["konsento"] }, "category": "technology" },
+    { "id": "jp-000116", "display": "マスク", "reading": "マスク", "writingSystem": "katakana", "romaji": { "primary": "masuku", "accepted": ["masuku"] }, "category": "health" },
+    { "id": "jp-000117", "display": "サイズ", "reading": "サイズ", "writingSystem": "katakana", "romaji": { "primary": "saizu", "accepted": ["saizu"] }, "category": "shopping" },
+    { "id": "jp-000118", "display": "デザイン", "reading": "デザイン", "writingSystem": "katakana", "romaji": { "primary": "dezain", "accepted": ["dezain"] }, "category": "objects" },
+    { "id": "jp-000215", "display": "インターネット", "reading": "インターネット", "writingSystem": "katakana", "romaji": { "primary": "intaanetto", "accepted": ["intaanetto"] }, "category": "technology" },
+    { "id": "jp-000216", "display": "メール", "reading": "メール", "writingSystem": "katakana", "romaji": { "primary": "meeru", "accepted": ["meeru"] }, "category": "communication" },
+    { "id": "jp-000217", "display": "スマートフォン", "reading": "スマートフォン", "writingSystem": "katakana", "romaji": { "primary": "sumaatofon", "accepted": ["sumaatofon"] }, "category": "technology" },
+    { "id": "jp-000218", "display": "ウェブサイト", "reading": "ウェブサイト", "writingSystem": "katakana", "romaji": { "primary": "webusaito", "accepted": ["webusaito"] }, "category": "technology" },
+    { "id": "jp-000219", "display": "アプリ", "reading": "アプリ", "writingSystem": "katakana", "romaji": { "primary": "apuri", "accepted": ["apuri"] }, "category": "technology" },
+    { "id": "jp-000220", "display": "コンサルタント", "reading": "コンサルタント", "writingSystem": "katakana", "romaji": { "primary": "konsarutanto", "accepted": ["konsarutanto"] }, "category": "work" },
+    { "id": "jp-000221", "display": "エンジニア", "reading": "エンジニア", "writingSystem": "katakana", "romaji": { "primary": "enjinia", "accepted": ["enjinia"] }, "category": "work" },
+    { "id": "jp-000222", "display": "デザイナー", "reading": "デザイナー", "writingSystem": "katakana", "romaji": { "primary": "dezainaa", "accepted": ["dezainaa"] }, "category": "work" },
+    { "id": "jp-000223", "display": "スタッフ", "reading": "スタッフ", "writingSystem": "katakana", "romaji": { "primary": "sutaffu", "accepted": ["sutaffu"] }, "category": "work" },
+    { "id": "jp-000224", "display": "マネージャー", "reading": "マネージャー", "writingSystem": "katakana", "romaji": { "primary": "maneejaa", "accepted": ["maneejaa"] }, "category": "work" },
+    { "id": "jp-000225", "display": "バドミントン", "reading": "バドミントン", "writingSystem": "katakana", "romaji": { "primary": "badominton", "accepted": ["badominton"] }, "category": "sports" },
+    { "id": "jp-000226", "display": "ジョギング", "reading": "ジョギング", "writingSystem": "katakana", "romaji": { "primary": "jogingu", "accepted": ["jogingu"] }, "category": "sports" },
+    { "id": "jp-000227", "display": "ハイキング", "reading": "ハイキング", "writingSystem": "katakana", "romaji": { "primary": "haikingu", "accepted": ["haikingu"] }, "category": "leisure" },
+    { "id": "jp-000228", "display": "キャンプ", "reading": "キャンプ", "writingSystem": "katakana", "romaji": { "primary": "kyanpu", "accepted": ["kyanpu"] }, "category": "leisure" },
+    { "id": "jp-000229", "display": "カラオケ", "reading": "カラオケ", "writingSystem": "katakana", "romaji": { "primary": "karaoke", "accepted": ["karaoke"] }, "category": "leisure" },
+    { "id": "jp-000230", "display": "ドラマ", "reading": "ドラマ", "writingSystem": "katakana", "romaji": { "primary": "dorama", "accepted": ["dorama"] }, "category": "entertainment" },
+    { "id": "jp-000231", "display": "オペラ", "reading": "オペラ", "writingSystem": "katakana", "romaji": { "primary": "opera", "accepted": ["opera"] }, "category": "entertainment" },
+    { "id": "jp-000232", "display": "クラシック", "reading": "クラシック", "writingSystem": "katakana", "romaji": { "primary": "kurashikku", "accepted": ["kurashikku"] }, "category": "music" },
+    { "id": "jp-000233", "display": "ジャズ", "reading": "ジャズ", "writingSystem": "katakana", "romaji": { "primary": "jazu", "accepted": ["jazu"] }, "category": "music" },
+    { "id": "jp-000234", "display": "マンガ", "reading": "マンガ", "writingSystem": "katakana", "romaji": { "primary": "manga", "accepted": ["manga"] }, "category": "entertainment" },
+    { "id": "jp-000235", "display": "インフォメーション", "reading": "インフォメーション", "writingSystem": "katakana", "romaji": { "primary": "infomeeshon", "accepted": ["infomeeshon"] }, "category": "travel" },
+    { "id": "jp-000236", "display": "スケジュール", "reading": "スケジュール", "writingSystem": "katakana", "romaji": { "primary": "sukejuuru", "accepted": ["sukejuuru"] }, "category": "time" },
+    { "id": "jp-000237", "display": "パスポート", "reading": "パスポート", "writingSystem": "katakana", "romaji": { "primary": "pasupooto", "accepted": ["pasupooto"] }, "category": "travel" },
+    { "id": "jp-000238", "display": "スーツケース", "reading": "スーツケース", "writingSystem": "katakana", "romaji": { "primary": "suutsukeesu", "accepted": ["suutsukeesu"] }, "category": "travel" },
+    { "id": "jp-000239", "display": "レンタカー", "reading": "レンタカー", "writingSystem": "katakana", "romaji": { "primary": "rentakaa", "accepted": ["rentakaa"] }, "category": "transportation" },
+    { "id": "jp-000240", "display": "サンドイッチ", "reading": "サンドイッチ", "writingSystem": "katakana", "romaji": { "primary": "sandoicchi", "accepted": ["sandoicchi"] }, "category": "food-drink" },
+    { "id": "jp-000241", "display": "スパゲッティ", "reading": "スパゲッティ", "writingSystem": "katakana", "romaji": { "primary": "supagetti", "accepted": ["supagetti"] }, "category": "food-drink" },
+    { "id": "jp-000242", "display": "ピザ", "reading": "ピザ", "writingSystem": "katakana", "romaji": { "primary": "piza", "accepted": ["piza"] }, "category": "food-drink" },
+    { "id": "jp-000243", "display": "ヨーグルト", "reading": "ヨーグルト", "writingSystem": "katakana", "romaji": { "primary": "yooguruto", "accepted": ["yooguruto"] }, "category": "food-drink" },
+    { "id": "jp-000244", "display": "チョコレート", "reading": "チョコレート", "writingSystem": "katakana", "romaji": { "primary": "chokoreeto", "accepted": ["chokoreeto"] }, "category": "food-drink" },
+    { "id": "jp-000245", "display": "デパート", "reading": "デパート", "writingSystem": "katakana", "romaji": { "primary": "depaato", "accepted": ["depaato"] }, "category": "shopping" },
+    { "id": "jp-000246", "display": "ショッピングモール", "reading": "ショッピングモール", "writingSystem": "katakana", "romaji": { "primary": "shoppingumooru", "accepted": ["shoppingumooru"] }, "category": "shopping" },
+    { "id": "jp-000247", "display": "セール", "reading": "セール", "writingSystem": "katakana", "romaji": { "primary": "seeru", "accepted": ["seeru"] }, "category": "shopping" },
+    { "id": "jp-000248", "display": "レジ", "reading": "レジ", "writingSystem": "katakana", "romaji": { "primary": "reji", "accepted": ["reji"] }, "category": "shopping" },
+    { "id": "jp-000249", "display": "クレジットカード", "reading": "クレジットカード", "writingSystem": "katakana", "romaji": { "primary": "kurejittokaado", "accepted": ["kurejittokaado"] }, "category": "shopping" },
+    { "id": "jp-000250", "display": "アレルギー", "reading": "アレルギー", "writingSystem": "katakana", "romaji": { "primary": "arerugii", "accepted": ["arerugii"] }, "category": "health" },
+    { "id": "jp-000251", "display": "ストレス", "reading": "ストレス", "writingSystem": "katakana", "romaji": { "primary": "sutoresu", "accepted": ["sutoresu"] }, "category": "health" },
+    { "id": "jp-000252", "display": "ダイエット", "reading": "ダイエット", "writingSystem": "katakana", "romaji": { "primary": "daietto", "accepted": ["daietto"] }, "category": "health" },
+    { "id": "jp-000253", "display": "トレーニング", "reading": "トレーニング", "writingSystem": "katakana", "romaji": { "primary": "toreeningu", "accepted": ["toreeningu"] }, "category": "health" },
+    { "id": "jp-000254", "display": "リラックス", "reading": "リラックス", "writingSystem": "katakana", "romaji": { "primary": "rirakkusu", "accepted": ["rirakkusu"] }, "category": "health" },
+    { "id": "jp-000255", "display": "ボランティア", "reading": "ボランティア", "writingSystem": "katakana", "romaji": { "primary": "borantia", "accepted": ["borantia"] }, "category": "social" },
+    { "id": "jp-000256", "display": "サークル", "reading": "サークル", "writingSystem": "katakana", "romaji": { "primary": "saakuru", "accepted": ["saakuru"] }, "category": "social" },
+    { "id": "jp-000257", "display": "ミーティング", "reading": "ミーティング", "writingSystem": "katakana", "romaji": { "primary": "miitingu", "accepted": ["miitingu"] }, "category": "work" },
+    { "id": "jp-000258", "display": "メッセージ", "reading": "メッセージ", "writingSystem": "katakana", "romaji": { "primary": "messeeji", "accepted": ["messeeji"] }, "category": "communication" },
+    { "id": "jp-000259", "display": "コミュニケーション", "reading": "コミュニケーション", "writingSystem": "katakana", "romaji": { "primary": "komyunikeeshon", "accepted": ["komyunikeeshon"] }, "category": "communication" },
+    { "id": "jp-000260", "display": "レクリエーション", "reading": "レクリエーション", "writingSystem": "katakana", "romaji": { "primary": "rekurieeshon", "accepted": ["rekurieeshon"] }, "category": "leisure" },
+    { "id": "jp-000261", "display": "オリエンテーション", "reading": "オリエンテーション", "writingSystem": "katakana", "romaji": { "primary": "orienteeshon", "accepted": ["orienteeshon"] }, "category": "education" },
+    { "id": "jp-000262", "display": "クリーニング", "reading": "クリーニング", "writingSystem": "katakana", "romaji": { "primary": "kuriiningu", "accepted": ["kuriiningu"] }, "category": "services" },
+    { "id": "jp-000263", "display": "エアコン", "reading": "エアコン", "writingSystem": "katakana", "romaji": { "primary": "eakon", "accepted": ["eakon"] }, "category": "home" },
+    { "id": "jp-000264", "display": "リモコン", "reading": "リモコン", "writingSystem": "katakana", "romaji": { "primary": "rimokon", "accepted": ["rimokon"] }, "category": "technology" }
+  ]
+}
