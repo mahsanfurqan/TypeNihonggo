@@ -109,12 +109,16 @@ function createBar(scene, x, y, width, label, value, maxValue, color) {
   return [graphics, labelText, valueText];
 }
 
-export function createResultStatsGraph(scene, stats, { x = 0, y = 0, compact = false } = {}) {
+export function createResultStatsGraph(
+  scene,
+  stats,
+  { x = 0, y = 0, compact = false, narrow = false } = {},
+) {
   const totalKeys = stats.totalCorrectKey + stats.totalWrongKey;
   const maxKeyCount = Math.max(stats.totalCorrectKey, stats.totalWrongKey, 1);
   const accuracy = Math.max(0, Math.min(100, stats.accuracyPercentage));
-  const panelWidth = compact ? 580 : 390;
-  const panelHeight = compact ? 118 : 276;
+  const panelWidth = compact ? (narrow ? 360 : 580) : 390;
+  const panelHeight = compact ? (narrow ? 178 : 118) : 276;
   const panel = scene.add.graphics();
 
   panel.fillStyle(0x04152b, 0.66);
@@ -135,6 +139,35 @@ export function createResultStatsGraph(scene, stats, { x = 0, y = 0, compact = f
   const children = [panel, title];
 
   if (compact) {
+    if (narrow) {
+      children.push(
+        createHoverableCard(scene, -88, -26, 160, 56, 'SCORE', String(stats.score), 'Final score'),
+        createHoverableCard(
+          scene,
+          88,
+          -26,
+          160,
+          56,
+          'WORDS',
+          String(stats.vocabularyCompletedCount),
+          'Vocabulary cleared',
+        ),
+        createHoverableCard(scene, -88, 43, 160, 56, 'ACCURACY', `${accuracy}%`, 'Typing accuracy'),
+        createHoverableCard(
+          scene,
+          88,
+          43,
+          160,
+          56,
+          'TIME',
+          formatElapsedTime(stats.elapsedMilliseconds),
+          'Play time',
+        ),
+      );
+
+      return scene.add.container(x, y, children);
+    }
+
     children.push(
       createHoverableCard(scene, -215, 14, 116, 62, 'SCORE', String(stats.score), 'Final score'),
       createHoverableCard(

@@ -1,5 +1,6 @@
 import { SETTINGS_PANEL_LABELS } from './settingsPanelContent.js';
 import { SetupButton } from './SetupButton.js';
+import { getUiLayout } from './responsiveUi.js';
 
 export class SettingsOverlay {
   constructor(scene) {
@@ -18,10 +19,10 @@ export class SettingsOverlay {
       return;
     }
 
-    const centerX = this.scene.cameras.main.width / 2;
-    const centerY = this.scene.cameras.main.height / 2;
-    const panelWidth = Math.min(620, this.scene.cameras.main.width - 90);
-    const panelHeight = 390;
+    const layout = getUiLayout(this.scene, { preferredWidth: 620, margin: 18 });
+    const { centerX, centerY, isCompact } = layout;
+    const panelWidth = layout.width;
+    const panelHeight = isCompact ? 420 : 390;
     const panelX = -panelWidth / 2;
     const panelY = -panelHeight / 2;
 
@@ -75,16 +76,16 @@ export class SettingsOverlay {
     );
 
     const title = this.scene.add
-      .text(0, -132, SETTINGS_PANEL_LABELS.title, {
+      .text(0, isCompact ? -148 : -132, SETTINGS_PANEL_LABELS.title, {
         fontFamily: '"Trebuchet MS", "Segoe UI", sans-serif',
-        fontSize: '38px',
+        fontSize: isCompact ? '30px' : '38px',
         color: '#f2fbff',
         fontStyle: '700',
         letterSpacing: 3,
       })
       .setOrigin(0.5);
     const subtitle = this.scene.add
-      .text(0, -92, SETTINGS_PANEL_LABELS.subtitle, {
+      .text(0, isCompact ? -108 : -92, SETTINGS_PANEL_LABELS.subtitle, {
         fontFamily: '"Trebuchet MS", "Segoe UI", sans-serif',
         fontSize: '14px',
         color: '#83d9f5',
@@ -103,7 +104,7 @@ export class SettingsOverlay {
     this.soundButton = new SetupButton(this.scene, {
       x: centerX,
       y: centerY - 30,
-      width: 320,
+      width: Math.min(320, panelWidth - 56),
       height: 56,
       label: isSoundMuted ? SETTINGS_PANEL_LABELS.soundOff : SETTINGS_PANEL_LABELS.soundOn,
       fontSize: 18,
@@ -116,7 +117,7 @@ export class SettingsOverlay {
     const resetButton = new SetupButton(this.scene, {
       x: centerX,
       y: centerY + 42,
-      width: 320,
+      width: Math.min(320, panelWidth - 56),
       height: 56,
       label: SETTINGS_PANEL_LABELS.resetProgress,
       fontSize: 18,
@@ -125,7 +126,7 @@ export class SettingsOverlay {
     const closeButton = new SetupButton(this.scene, {
       x: centerX,
       y: centerY + 116,
-      width: 320,
+      width: Math.min(320, panelWidth - 56),
       height: 56,
       label: SETTINGS_PANEL_LABELS.close,
       fontSize: 18,
@@ -171,4 +172,3 @@ export class SettingsOverlay {
     this.clear();
   }
 }
-

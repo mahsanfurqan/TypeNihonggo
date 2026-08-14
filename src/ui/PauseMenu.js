@@ -1,4 +1,5 @@
 import { SetupButton } from './SetupButton.js';
+import { getUiLayout } from './responsiveUi.js';
 
 export class PauseMenu {
   constructor(scene) {
@@ -12,9 +13,9 @@ export class PauseMenu {
       return;
     }
 
-    const centerX = this.scene.cameras.main.width / 2;
-    const centerY = this.scene.cameras.main.height / 2;
-    const panelWidth = Math.min(590, this.scene.cameras.main.width - 80);
+    const layout = getUiLayout(this.scene, { preferredWidth: 590, margin: 18 });
+    const { centerX, centerY, isCompact } = layout;
+    const panelWidth = layout.width;
     const panelHeight = 470;
     const panelX = -panelWidth / 2;
     const panelY = -panelHeight / 2;
@@ -71,7 +72,7 @@ export class PauseMenu {
     const title = this.scene.add
       .text(0, -158, 'SYSTEM - PAUSED', {
         fontFamily: '"Trebuchet MS", "Segoe UI", sans-serif',
-        fontSize: '36px',
+        fontSize: isCompact ? '30px' : '36px',
         color: '#f2fbff',
         fontStyle: '700',
         letterSpacing: 2,
@@ -105,7 +106,7 @@ export class PauseMenu {
         new SetupButton(this.scene, {
           x: centerX,
           y,
-          width: 360,
+          width: Math.min(360, panelWidth - 52),
           height: 58,
           label,
           fontSize: 18,

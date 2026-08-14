@@ -68,7 +68,7 @@ body {
 
 @media (max-width: 1280px) {
   :root {
-    --typenihongo-keyboard-height: clamp(184px, 30vh, 280px);
+    --typenihongo-keyboard-height: clamp(280px, 36dvh, 400px);
   }
 
   #app,
@@ -84,12 +84,12 @@ body {
     place-items: end center;
   }
 
-  html.typenihongo-gameplay-active .typenihongo-game {
+  html.typenihongo-responsive-canvas-active .typenihongo-game {
     position: relative;
     overflow: hidden;
   }
 
-  html.typenihongo-gameplay-active .typenihongo-game canvas {
+  html.typenihongo-responsive-canvas-active .typenihongo-game canvas {
     position: absolute;
     left: 50%;
     bottom: 0;
@@ -110,51 +110,87 @@ body {
     bottom: 0;
     z-index: 20;
     place-items: center;
-    padding: 8px 10px max(10px, env(safe-area-inset-bottom));
+    padding: 10px 8px max(12px, env(safe-area-inset-bottom));
     box-sizing: border-box;
     overflow: visible;
     pointer-events: auto;
     background:
-      linear-gradient(180deg, rgba(4, 9, 20, 0), rgba(4, 9, 20, 0.72) 18%),
-      radial-gradient(circle at top, rgba(58, 172, 231, 0.12), transparent 64%);
-    backdrop-filter: blur(2px);
+      linear-gradient(180deg, rgba(3, 11, 23, 0.82), rgba(2, 8, 18, 0.98)),
+      radial-gradient(circle at 50% 0%, rgba(69, 196, 255, 0.2), transparent 58%);
+    border-top: 1px solid rgba(102, 218, 255, 0.72);
+    box-shadow:
+      0 -8px 24px rgba(17, 147, 211, 0.12),
+      inset 0 1px 0 rgba(186, 239, 255, 0.16);
+    backdrop-filter: blur(5px);
   }
 
   .mobile-typing-input__keyboard {
-    width: min(100%, 760px);
+    width: min(100%, 1100px);
     display: block;
-    padding: 6px;
-    border-radius: 9px;
-    background: transparent;
+    padding: 10px;
+    border: 1px solid rgba(91, 207, 255, 0.46);
+    border-radius: 12px;
+    background:
+      linear-gradient(180deg, rgba(10, 38, 67, 0.94), rgba(4, 19, 38, 0.98)),
+      repeating-linear-gradient(
+        0deg,
+        rgba(117, 219, 255, 0.025) 0,
+        rgba(117, 219, 255, 0.025) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+    box-shadow:
+      0 0 18px rgba(54, 186, 244, 0.2),
+      inset 0 0 20px rgba(30, 140, 196, 0.08);
     box-sizing: border-box;
   }
 
   .typenihongo-virtual-keyboard.hg-theme-default {
-    background: transparent;
+    background:
+      linear-gradient(180deg, rgba(10, 38, 67, 0.94), rgba(4, 19, 38, 0.98)),
+      repeating-linear-gradient(
+        0deg,
+        rgba(117, 219, 255, 0.025) 0,
+        rgba(117, 219, 255, 0.025) 1px,
+        transparent 1px,
+        transparent 4px
+      );
     font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
   }
 
   .typenihongo-virtual-keyboard .hg-row {
-    gap: 4px;
-    margin-bottom: 5px;
+    gap: clamp(4px, 1.1vw, 8px);
+    margin-bottom: clamp(5px, 1.2vh, 8px);
   }
 
   .typenihongo-virtual-keyboard .hg-button {
-    height: clamp(34px, 6vh, 52px);
+    height: clamp(48px, 6.2dvh, 60px) !important;
     min-width: 0;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    background: linear-gradient(180deg, #4f4f4f 0%, #363636 100%) !important;
+    border: 1px solid rgba(108, 220, 255, 0.58);
+    border-radius: 7px;
+    background: linear-gradient(180deg, #123b61 0%, #09233e 100%) !important;
     box-shadow:
-      0 2px 0 rgba(0, 0, 0, 0.42),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    color: #f2f2f2 !important;
-    font-size: clamp(16px, 3.4vw, 26px);
+      0 3px 0 rgba(0, 7, 18, 0.66),
+      0 0 7px rgba(51, 184, 238, 0.12),
+      inset 0 1px 0 rgba(185, 238, 255, 0.14);
+    color: #eafaff !important;
+    font-size: clamp(17px, 3.5vw, 27px);
     font-weight: 700;
+    text-shadow: 0 0 6px rgba(118, 223, 255, 0.45);
+    transition:
+      transform 55ms ease-out,
+      filter 55ms ease-out,
+      box-shadow 55ms ease-out;
   }
 
   .typenihongo-virtual-keyboard .hg-button:active {
-    background: linear-gradient(180deg, #6a6a6a 0%, #464646 100%) !important;
+    background: linear-gradient(180deg, #2385ae 0%, #125273 100%) !important;
+    border-color: #b7efff;
+    box-shadow:
+      0 1px 0 rgba(0, 7, 18, 0.5),
+      0 0 14px rgba(76, 209, 255, 0.64),
+      inset 0 0 8px rgba(207, 247, 255, 0.18);
+    filter: brightness(1.12);
     transform: translateY(1px);
   }
 
@@ -170,11 +206,18 @@ body {
   .typenihongo-virtual-keyboard .hg-button-shift {
     flex: 1.1 1 42px;
     font-size: clamp(13px, 2.7vw, 19px);
+    border-color: rgba(126, 228, 255, 0.76);
+    background: linear-gradient(180deg, #185176 0%, #0a2c4a 100%) !important;
+    color: #c8f4ff !important;
   }
 }
 
 @media (min-width: 760px) and (max-width: 1280px) {
   :root {
-    --typenihongo-keyboard-height: clamp(220px, 30vh, 320px);
+    --typenihongo-keyboard-height: clamp(320px, 36dvh, 440px);
+  }
+
+  .typenihongo-virtual-keyboard .hg-button {
+    height: clamp(58px, 6dvh, 72px) !important;
   }
 }

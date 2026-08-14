@@ -1,3 +1,5 @@
+import { getUiLayout } from './responsiveUi.js';
+
 const DISPLAY_DURATION_MS = 1300;
 const ENTER_DURATION_MS = 160;
 const EXIT_DURATION_MS = 220;
@@ -14,9 +16,9 @@ export class LevelCompleteOverlay {
       return;
     }
 
-    const centerX = this.scene.cameras.main.width / 2;
-    const centerY = this.scene.cameras.main.height / 2;
-    const panelWidth = Math.min(640, this.scene.cameras.main.width - 80);
+    const layout = getUiLayout(this.scene, { preferredWidth: 640, margin: 18 });
+    const { centerX, centerY, isCompact } = layout;
+    const panelWidth = layout.width;
     const panelHeight = 210;
     const panelX = -panelWidth / 2;
     const panelY = -panelHeight / 2;
@@ -71,7 +73,7 @@ export class LevelCompleteOverlay {
     const title = this.scene.add
       .text(0, -34, 'LEVEL COMPLETE', {
         fontFamily: '"Trebuchet MS", "Segoe UI", sans-serif',
-        fontSize: '40px',
+        fontSize: isCompact ? '30px' : '40px',
         color: '#f2fbff',
         fontStyle: '700',
         letterSpacing: 3,
@@ -80,7 +82,7 @@ export class LevelCompleteOverlay {
     const levelLabel = this.scene.add
       .text(0, 38, `LEVEL ${currentLevel} → LEVEL ${nextLevel}`, {
         fontFamily: '"Trebuchet MS", "Segoe UI", sans-serif',
-        fontSize: '24px',
+        fontSize: isCompact ? '18px' : '24px',
         color: '#83d9f5',
         fontStyle: '700',
         letterSpacing: 1,

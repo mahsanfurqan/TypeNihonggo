@@ -3,14 +3,14 @@ import {
   resolveGameplayViewport,
 } from '../config/responsiveGameplay.js';
 
-const GAMEPLAY_CLASS = 'typenihongo-gameplay-active';
+const RESPONSIVE_CANVAS_CLASS = 'typenihongo-responsive-canvas-active';
 
 export class ResponsiveGameplayViewport {
   constructor(scene) {
     this.scene = scene;
     this.gameRoot = scene.game.canvas?.parentElement ?? null;
     this.documentRoot = globalThis.document?.documentElement ?? null;
-    this.documentRoot?.classList.add(GAMEPLAY_CLASS);
+    this.documentRoot?.classList.add(RESPONSIVE_CANVAS_CLASS);
     this.bounds = this.resolveBounds();
   }
 
@@ -26,7 +26,7 @@ export class ResponsiveGameplayViewport {
   }
 
   destroy() {
-    this.documentRoot?.classList.remove(GAMEPLAY_CLASS);
+    this.documentRoot?.classList.remove(RESPONSIVE_CANVAS_CLASS);
     this.scene = null;
     this.gameRoot = null;
     this.documentRoot = null;

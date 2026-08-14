@@ -1,6 +1,7 @@
 import { createResultStatsGraph } from './ResultStatsGraph.js';
 import { SetupButton } from './SetupButton.js';
 import { createVocabularyReviewPanel } from './VocabularyReviewPanel.js';
+import { getUiLayout } from './responsiveUi.js';
 
 const FONT_FAMILY = '"Trebuchet MS", "Segoe UI", sans-serif';
 
@@ -41,10 +42,10 @@ export class GameOverOverlay {
       return;
     }
 
-    const centerX = this.scene.cameras.main.width / 2;
-    const centerY = this.scene.cameras.main.height / 2;
-    const panelWidth = Math.min(860, this.scene.cameras.main.width - 80);
-    const panelHeight = Math.min(548, this.scene.cameras.main.height - 34);
+    const layout = getUiLayout(this.scene, { preferredWidth: 860, margin: 12 });
+    const { centerX, centerY, isCompact } = layout;
+    const panelWidth = layout.width;
+    const panelHeight = isCompact ? 690 : Math.min(548, this.scene.cameras.main.height - 34);
     const panelX = -panelWidth / 2;
     const panelY = -panelHeight / 2;
 
@@ -98,16 +99,16 @@ export class GameOverOverlay {
     );
 
     const title = this.scene.add
-      .text(0, -218, 'GAME OVER', {
+      .text(0, isCompact ? -305 : -218, 'GAME OVER', {
         fontFamily: FONT_FAMILY,
-        fontSize: '48px',
+        fontSize: isCompact ? '38px' : '48px',
         color: '#f2fbff',
         fontStyle: '700',
         letterSpacing: 4,
       })
       .setOrigin(0.5);
     const subtitle = this.scene.add
-      .text(0, -188, 'SYSTEM - SESSION RESULT', {
+      .text(0, isCompact ? -264 : -188, 'SYSTEM - SESSION RESULT', {
         fontFamily: FONT_FAMILY,
         fontSize: '15px',
         color: '#83d9f5',
@@ -129,17 +130,38 @@ export class GameOverOverlay {
       accuracyPercentage: 100,
       vocabularyReview: [],
     };
-    const statsGraph = createResultStatsGraph(this.scene, resultStats, { x: -190, y: -20 });
+    const statsGraph = createResultStatsGraph(this.scene, resultStats, {
+      x: isCompact ? 0 : -190,
+      y: isCompact ? -126 : -20,
+    });
+
+    if (isCompact) {
+      statsGraph.setScale(0.88);
+    }
+
     const reviewPanel = createVocabularyReviewPanel(
       this.scene,
-      218,
-      -20,
+      isCompact ? 0 : 218,
+      isCompact ? 104 : -20,
       resultStats.vocabularyReview,
+      isCompact ? { width: panelWidth - 48, height: 216, maxItems: 4 } : undefined,
     );
-    const contextBadges = [
-      ...createMetaBadge(this.scene, -190, 151, 260, 'LEVEL', String(resultStats.currentLevel)),
-      ...createMetaBadge(this.scene, 218, 151, 348, 'STAGE', stageLabel),
-    ];
+    const contextBadges = isCompact
+      ? [
+          ...createMetaBadge(
+            this.scene,
+            0,
+            236,
+            panelWidth - 48,
+            'LEVEL',
+            String(resultStats.currentLevel),
+          ),
+          ...createMetaBadge(this.scene, 0, 280, panelWidth - 48, 'STAGE', stageLabel),
+        ]
+      : [
+          ...createMetaBadge(this.scene, -190, 151, 260, 'LEVEL', String(resultStats.currentLevel)),
+          ...createMetaBadge(this.scene, 218, 151, 348, 'STAGE', stageLabel),
+        ];
 
     this.container = this.scene.add
       .container(centerX, centerY, [
@@ -159,24 +181,24 @@ export class GameOverOverlay {
 
     this.buttons = [
       new SetupButton(this.scene, {
-        x: centerX - 150,
-        y: centerY + 226,
-        width: 270,
-        height: 58,
+        x: centerX - (isCompact ? 94 : 150),
+        y: centerY + (isCompact ? 319 : 226),
+        width: isCompact ? 174 : 270,
+        height: isCompact ? 46 : 58,
         label: 'RETRY STAGE',
-        fontSize: 18,
+        fontSize: isCompact ? 14 : 18,
         onSelect: () => {
           this.clear();
           onRetryStage?.();
         },
       }),
       new SetupButton(this.scene, {
-        x: centerX + 150,
-        y: centerY + 226,
-        width: 270,
-        height: 58,
+        x: centerX + (isCompact ? 94 : 150),
+        y: centerY + (isCompact ? 319 : 226),
+        width: isCompact ? 174 : 270,
+        height: isCompact ? 46 : 58,
         label: 'BACK TO SETUP',
-        fontSize: 18,
+        fontSize: isCompact ? 14 : 18,
         onSelect: () => {
           this.clear();
           onBackToSetup?.();

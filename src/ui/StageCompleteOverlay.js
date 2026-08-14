@@ -1,6 +1,7 @@
 import { createResultStatsGraph } from './ResultStatsGraph.js';
 import { SetupButton } from './SetupButton.js';
 import { createCompactVocabularyReview } from './VocabularyReviewPanel.js';
+import { getUiLayout } from './responsiveUi.js';
 
 const FONT_FAMILY = '"Trebuchet MS", "Segoe UI", sans-serif';
 
@@ -16,10 +17,10 @@ export class StageCompleteOverlay {
       return;
     }
 
-    const centerX = this.scene.cameras.main.width / 2;
-    const centerY = this.scene.cameras.main.height / 2;
-    const panelWidth = Math.min(760, this.scene.cameras.main.width - 80);
-    const panelHeight = 530;
+    const layout = getUiLayout(this.scene, { preferredWidth: 760, margin: 12 });
+    const { centerX, centerY, isCompact } = layout;
+    const panelWidth = layout.width;
+    const panelHeight = isCompact ? 590 : 530;
     const panelX = -panelWidth / 2;
     const panelY = -panelHeight / 2;
 
@@ -73,18 +74,18 @@ export class StageCompleteOverlay {
     );
 
     const title = this.scene.add
-      .text(0, -160, 'STAGE COMPLETE', {
+      .text(0, isCompact ? -240 : -160, 'STAGE COMPLETE', {
         fontFamily: FONT_FAMILY,
-        fontSize: '42px',
+        fontSize: isCompact ? '34px' : '42px',
         color: '#f2fbff',
         fontStyle: '700',
         letterSpacing: 3,
       })
       .setOrigin(0.5);
     const stageLabel = this.scene.add
-      .text(0, -104, `LEVEL ${stage.levelRange.min} - ${stage.levelRange.max} CLEARED`, {
+      .text(0, isCompact ? -193 : -104, `LEVEL ${stage.levelRange.min} - ${stage.levelRange.max} CLEARED`, {
         fontFamily: FONT_FAMILY,
-        fontSize: '21px',
+        fontSize: isCompact ? '17px' : '21px',
         color: '#83d9f5',
         fontStyle: '700',
         letterSpacing: 1,
@@ -93,7 +94,7 @@ export class StageCompleteOverlay {
     const statusLabel = this.scene.add
       .text(
         0,
-        -73,
+        isCompact ? -160 : -73,
         nextStage ? `NEXT PROTOCOL - LEVEL ${nextStage.levelRange.min}` : 'GENERAL COURSE CLEARED',
         {
           fontFamily: FONT_FAMILY,
@@ -104,9 +105,20 @@ export class StageCompleteOverlay {
       )
       .setOrigin(0.5);
     const summary = stats
-      ? [createResultStatsGraph(this.scene, stats, { x: 0, y: 16, compact: true })]
+      ? [
+          createResultStatsGraph(this.scene, stats, {
+            x: 0,
+            y: isCompact ? -55 : 16,
+            compact: true,
+            narrow: isCompact,
+          }),
+        ]
       : [];
-    const vocabularyReview = createCompactVocabularyReview(this.scene, stats?.vocabularyReview);
+    const vocabularyReview = createCompactVocabularyReview(
+      this.scene,
+      stats?.vocabularyReview,
+      isCompact ? { width: panelWidth - 48, y: 62 } : undefined,
+    );
 
     this.container = this.scene.add
       .container(centerX, centerY, [
@@ -125,12 +137,12 @@ export class StageCompleteOverlay {
       .setScale(0.97);
 
     const nextButton = new SetupButton(this.scene, {
-      x: centerX - 165,
-      y: centerY + 202,
-      width: 280,
-      height: 58,
+      x: centerX - (isCompact ? 94 : 165),
+      y: centerY + (isCompact ? 245 : 202),
+      width: isCompact ? 174 : 280,
+      height: isCompact ? 48 : 58,
       label: 'NEXT STAGE',
-      fontSize: 18,
+      fontSize: isCompact ? 14 : 18,
       onSelect: () => {
         this.clear();
         onNextStage?.();
@@ -141,12 +153,12 @@ export class StageCompleteOverlay {
       .setAlpha(0)
       .setScale(0.97);
     const menuButton = new SetupButton(this.scene, {
-      x: centerX + 165,
-      y: centerY + 202,
-      width: 280,
-      height: 58,
+      x: centerX + (isCompact ? 94 : 165),
+      y: centerY + (isCompact ? 245 : 202),
+      width: isCompact ? 174 : 280,
+      height: isCompact ? 48 : 58,
       label: 'BACK TO MENU',
-      fontSize: 18,
+      fontSize: isCompact ? 14 : 18,
       onSelect: () => {
         this.clear();
         onBackToMenu?.();

@@ -4,6 +4,7 @@ import { generalCourseConfig } from '../data/vocabulary/index.js';
 import { AudioManager } from '../managers/AudioManager.js';
 import { BackgroundManager } from '../managers/BackgroundManager.js';
 import { LocalProgressManager } from '../managers/LocalProgressManager.js';
+import { ResponsiveGameplayViewport } from '../managers/ResponsiveGameplayViewport.js';
 import { SetupSessionController } from '../managers/SetupSessionController.js';
 import { Dropdown } from '../ui/Dropdown.js';
 import { SettingsOverlay } from '../ui/SettingsOverlay.js';
@@ -16,8 +17,12 @@ export class SetupScene extends Phaser.Scene {
   }
 
   create() {
-    const centerX = this.cameras.main.centerX;
+    this.responsiveViewport = new ResponsiveGameplayViewport(this);
+    this.uiViewport = this.responsiveViewport.bounds;
+    const centerX = this.uiViewport.centerX;
     const centerY = this.cameras.main.centerY;
+    const isCompact = this.uiViewport.width < 720;
+    const controlWidth = isCompact ? this.uiViewport.width - 56 : 780;
 
     this.localProgressManager = new LocalProgressManager();
     this.setupSessionController = new SetupSessionController({
@@ -30,10 +35,10 @@ export class SetupScene extends Phaser.Scene {
     this.audioManager = new AudioManager();
     this.backgroundManager = new BackgroundManager(this);
     this.settingsOverlay = new SettingsOverlay(this);
-    this.setupPanel = new SetupPanel(this);
+    this.setupPanel = new SetupPanel(this, { viewport: this.uiViewport });
     this.setupPanel.create(centerX, centerY);
-    this.createLanguageDropdown(centerX, centerY);
-    this.createStageDropdown(centerX, centerY);
+    this.createLanguageDropdown(centerX, centerY, controlWidth, isCompact);
+    this.createStageDropdown(centerX, centerY, controlWidth, isCompact);
     this.createTestingModeButton(centerX, centerY);
     this.createSettingsButton(centerX, centerY);
     this.createStartButton(centerX, centerY);
@@ -46,11 +51,11 @@ export class SetupScene extends Phaser.Scene {
     this.backgroundManager?.update(delta);
   }
 
-  createLanguageDropdown(centerX, centerY) {
+  createLanguageDropdown(centerX, centerY, width, isCompact) {
     this.languageDropdown = new Dropdown(this, {
       x: centerX,
       y: centerY - 100,
-      width: 780,
+      width,
       height: 50,
       selectedValue: this.sessionConfig.locale,
       options: LOCALE_OPTIONS.map((locale) => ({
@@ -58,22 +63,22 @@ export class SetupScene extends Phaser.Scene {
         label: locale.label,
         flag: locale.flag,
       })),
-      fontSize: 16,
+      fontSize: isCompact ? 13 : 16,
       depth: 60,
       onOpen: () => this.stageDropdown?.close(),
       onSelect: (locale) => this.selectLocale(locale),
     });
   }
 
-  createStageDropdown(centerX, centerY) {
+  createStageDropdown(centerX, centerY, width, isCompact) {
     this.stageDropdown = new Dropdown(this, {
       x: centerX,
       y: centerY - 20,
-      width: 780,
+      width,
       height: 54,
       selectedValue: this.sessionConfig.currentLevel,
       options: this.createStageOptions(),
-      fontSize: 14,
+      fontSize: isCompact ? 12 : 14,
       optionHeight: 48,
       depth: 54,
       onOpen: () => this.languageDropdown?.close(),
@@ -218,5 +223,6 @@ export class SetupScene extends Phaser.Scene {
     this.setupPanel?.destroy();
     this.backgroundManager?.destroy();
     this.audioManager?.destroy();
+    this.responsiveViewport?.destroy();
   }
 }

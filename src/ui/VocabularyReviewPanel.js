@@ -30,9 +30,13 @@ function createReviewLine(scene, y, vocabulary, width) {
   return [rowBackground, displayText, detailText];
 }
 
-export function createVocabularyReviewPanel(scene, x, y, vocabularyReview = []) {
-  const width = 348;
-  const height = 290;
+export function createVocabularyReviewPanel(
+  scene,
+  x,
+  y,
+  vocabularyReview = [],
+  { width = 348, height = 290, maxItems = 5 } = {},
+) {
   const background = scene.add.graphics();
 
   background.fillStyle(0x04152b, 0.66);
@@ -55,9 +59,9 @@ export function createVocabularyReviewPanel(scene, x, y, vocabularyReview = []) 
   if (vocabularyReview.length > 0) {
     children.push(
       ...vocabularyReview
-        .slice(0, 5)
+        .slice(0, maxItems)
         .flatMap((vocabulary, index) =>
-          createReviewLine(scene, -91 + index * 43, vocabulary, width - 26),
+          createReviewLine(scene, -height / 2 + 58 + index * 43, vocabulary, width - 26),
         ),
     );
   } else {
@@ -75,12 +79,16 @@ export function createVocabularyReviewPanel(scene, x, y, vocabularyReview = []) 
   return scene.add.container(x, y, children);
 }
 
-export function createCompactVocabularyReview(scene, vocabularyReview) {
+export function createCompactVocabularyReview(
+  scene,
+  vocabularyReview,
+  { width = 560, y = 130 } = {},
+) {
   if (!vocabularyReview?.length) {
     return [];
   }
 
-  const reviewWidth = 560;
+  const reviewWidth = width;
   const reviewHeight = 44;
   const background = scene.add.graphics();
 
@@ -101,7 +109,7 @@ export function createCompactVocabularyReview(scene, vocabularyReview) {
   const line = vocabularyReview
     .slice(0, 3)
     .map((vocabulary) => `${vocabulary.display}  ${vocabulary.romaji}  x${vocabulary.completionCount}`)
-    .join('   |   ');
+    .join('   ·   ');
   const review = scene.add
     .text(0, 10, line, {
       fontFamily: '"Noto Sans JP", "Yu Gothic UI", "Trebuchet MS", sans-serif',
@@ -112,5 +120,5 @@ export function createCompactVocabularyReview(scene, vocabularyReview) {
     })
     .setOrigin(0.5);
 
-  return [scene.add.container(0, 130, [background, title, review])];
+  return [scene.add.container(0, y, [background, title, review])];
 }
