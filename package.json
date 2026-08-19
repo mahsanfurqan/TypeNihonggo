@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:mobile-game": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",
     "test": "node --test",
+    "mobile:start": "npm --prefix mobile start",
+    "mobile:typecheck": "npm --prefix mobile run typecheck",
+    "mobile:doctor": "npm --prefix mobile run doctor",
     "locale:create": "node scripts/create-locale.mjs",
     "validate:vocabulary": "node scripts/validate-vocabulary.mjs"
   },
